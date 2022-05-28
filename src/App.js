@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { React, useState } from 'react';
+import HomePage from './pages/HomePage';
+import TasksContext from './contexts/TasksContext';
+import ThemeContext from './contexts/ThemeContext';
 
 function App() {
+
+  const [theme, setTheme] = useState('light');
+  const [tasks, setTasks] = useState([{id:1,content:"Sortir le chien", completed:false}, {id:2,content:"Préparer à manger", completed:true}, {id:3, content:"Aller en courses", completed:false}]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <TasksContext.Provider value={{ tasks, setTasks }}>
+        <main className={["App",theme].join(" ")}>
+          <HomePage />
+          <button onClick={()=>setTheme(theme==="dark"? "light":"dark")}>Switch to {theme === 'light'? 'dark':'light'} mode</button>
+        </main>
+      </TasksContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 

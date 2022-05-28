@@ -1,0 +1,22 @@
+.TaskPreview{
+    border-radius: 5px;
+    padding:0.2em;
+    width:15em;
+    margin:0.2em;
+}
+
+.TaskPreview span{
+    margin:0.2em;
+}
+
+.greenBG{
+    background-color: #43a047;
+}
+
+.yellowBG{
+    background-color: #ffeb3b;
+}
+
+.whiteC{
+    color:white;
+}
